@@ -5,7 +5,9 @@ echo form_open('',$form_attributes);?>
 <table>
 	<thead>
 	<p class="bg-info"> Vaccines</p>
-		<th style="width:50%;" class="small" align="center">Vaccine/Diluents</th>
+		<th style="width:30%;" class="small" align="center">Vaccine/Diluents</th>
+		<th style="width:30%;" class="small" align="center">Batch Numbers</th>
+		<th style="width:20%;" class="small" align="center">Store Balance</th>
 							
 	</thead>
 	<tbody>
@@ -16,6 +18,15 @@ echo form_open('',$form_attributes);?>
                      echo "<option value='".$vaccine['ID']."'>".$vaccine['Vaccine_name']."</option>";
                      }?>
                 </select></td>
+        <td> <select name="batch_list" class="col-xs-11 batch_list" id="batch_list">
+                 <option value="">--Select One--</option>
+                 <?php foreach ($vaccines as $vaccine) { 
+                     echo "<option value='".$vaccine['ID']."'>".$vaccine['Vaccine_name']."</option>";
+                     }?>
+                </select></td>
+        <td><?php $data=array('name' => 'store_bal','id'=> 'store_bal','class'=>'store_bal col-xs-14'); echo form_input($data);?></td>
+        
+
              		
 	</tbody>
 </table>
@@ -26,11 +37,12 @@ echo form_open('',$form_attributes);?>
 	<thead>
 	<p class="bg-info"> Vaccine Ledger</p>
 		<th style="width:12%;" class="small">Vaccines/Diluents (Origin/Destination)</th>
+		<th style="width:12%;" class="small">Origin/Destination</th>
 		                    <th style="width:12%" class="small">Batch Number</th>
 							<th style="width:12%;" class="small">Transaction Date</th>
 							<th style="width:12%;" class="small"> Stock Received </th>
 							<th style="width:12%;" class="small">Stock Issued</th>
-							<th style="width:12%;" class="small">Store Balance</th>
+							<th style="width:12%;" class="small">Physical Count</th>
 							<th style="width:12%" class="small">Expiry Date</th>
 							<th style="width:10%" class="small">VVM Status</th>
 	</thead>
@@ -40,6 +52,7 @@ echo form_open('',$form_attributes);?>
 		<tr align="center" ledger_row="1">
 				
              	    
+             	    <td><?php echo $ledger['Vaccine_name']?></td>
              	    <td><?php echo $ledger['Vaccine_name']?></td>
              	    <td><?php echo $ledger['batch_number']?></td>
              	    <td><?php echo $ledger['transaction_date']?></td>

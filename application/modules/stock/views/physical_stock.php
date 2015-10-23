@@ -39,7 +39,7 @@ echo form_open('',$form_attributes);?>
 	</tbody>
 </table>
 </div>
-<input type="submit" name="physical_count_fm" id="physical_count_fm" value="Register Physical Count">
+<input type="submit" name="physical_count_fm" id="physical_count_fm" value="Submit">
 
 <?php echo form_close();?>
 

@@ -9,6 +9,16 @@ class Stock extends MX_Controller
 	{
 		parent::__construct();
 	}
+  public function tester1(){
+
+    /*$this->load->view('test_v'); */
+      $data['module'] = "stock";
+      $data['view_file'] = "test_v";
+      $data['section'] = "stock";
+      $data['subtitle'] = "Test Stock";
+      $data['page_title'] = "Test Stock";
+      echo Modules::run('template/admin', $data);
+  }
 
    
     public function testing(){

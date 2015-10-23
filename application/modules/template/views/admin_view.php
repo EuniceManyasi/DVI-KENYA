@@ -9,12 +9,16 @@
 <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url() ?>assets/css/animate.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url() ?>assets/css/admin.css" rel="stylesheet" type="text/css" />
-<script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/jquery-ui.css">
 
 <script src="<?php echo base_url();?>assets/js/jquery-ui.min.js"></script>
 
-<link rel="stylesheet" href="<?php echo base_url();?>assets/css/jquery-ui.css">
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.css"/>
+    
+<!-- DataTables --> 
+<script type="text/javascript" src="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.js"></script>
+
 
 </head>
 <body class="light_theme  fixed_header left_nav_fixed">
