@@ -9,16 +9,6 @@ class Stock extends MX_Controller
 	{
 		parent::__construct();
 	}
-  public function tester1(){
-
-    /*$this->load->view('test_v'); */
-      $data['module'] = "stock";
-      $data['view_file'] = "test_v";
-      $data['section'] = "stock";
-      $data['subtitle'] = "Test Stock";
-      $data['page_title'] = "Test Stock";
-      echo Modules::run('template/admin', $data);
-  }
 
    
     public function testing(){
@@ -129,31 +119,6 @@ class Stock extends MX_Controller
 
     }
 
-    function physical_count(){
-        $this->load->model('vaccines/mdl_vaccines');
-        $data['vaccines']= $this->mdl_vaccines->getVaccine();
-        $data['module'] = "stock";
-        $data['view_file'] = "physical_stock";
-        $data['section'] = "stock";
-        $data['subtitle'] = "Physical Stock Count";
-        $data['page_title'] = "Physical Stock Count";
-         echo Modules::run('template/admin', $data);
-    }
-    function save_physical_count(){
-       $data = array( 
-          'vaccine_id' => $this->input->post('vaccine'),
-          'batch_number'=>$this->input->post('batch_no'),
-          'physical_count =' => '0' 
-          );
-       $count = array('physical_count' => $this->input->post('physical_count'));
-         $this->load->model('stock/mdl_stock');
-         $this->mdl_stock->set_physical_count($data,$count);
-          /*this->db->insert('m_stock_movement',$data); 
-          $this->session->set_flashdata('msg', '<div id="alert-message" class="alert alert-success text-center">Stock issue details added successfully!</div>');*/
-          echo json_encode($data);
-          print_r($data);
-
-    }
     function transfer_stock(){
          $data['module'] = "stock";
          $data['view_file'] = "transfer_stock";

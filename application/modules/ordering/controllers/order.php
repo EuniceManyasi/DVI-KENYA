@@ -16,14 +16,6 @@ $this->load->model('mdl_vaccines');
 $query = $this->mdl_vaccines->get($order_by);
 return $query;
 }
-// Get information on the selected vaccines from orders
-public function get_order_values(){
-    $selected_vaccine=$this->input->post('selected_vaccine');
-    $this-> load->model('mdl_order');
-    $data=$this->mdl_order->get_order_values($selected_vaccine);
-   
-    echo json_encode($data);
-}
 public function create_order(){
 
   $this->load->model('vaccines/mdl_vaccines');
@@ -31,8 +23,8 @@ public function create_order(){
   $data['section'] = "Vaccines";
   $data['subtitle'] = "Place Order";
   $data['page_title'] = "Place Order";
-  $data['module'] = "order";
-  $data['options']="none";
+ 	$data['module'] = "order";
+   $data['options']="none";
 	$data['view_file'] = "create_order_form";
 
 	/*echo Modules::run('template/admin', $data);*/
@@ -73,28 +65,68 @@ if (!empty($content_array)) {
   echo Modules::run('template/admin', $data);
 }
 
-function save_order(){
-    //Order Information
+public function save_order(){
+
+ $save = $this -> input -> post("place_order");
+ if ($save) {
+
+  //Order Information
        $date_created = $this -> input -> post('created');
        $order_array['date_created']=$date_created; 
        $this->db->insert('order', $order_array);
        $order_id = $this -> db -> insert_id(); 
 
   //Order item information
-     
-       $data = array(
-       'vaccine_id' => $this -> input -> post('vaccine'),
-       'stock_on_hand' => $this -> input -> post("stock_on_hand"),
-       'min_stock' => $this -> input -> post("min_stock"),
-       'max_stock' => $this -> input -> post("max_stock"),
-       'first_expiry' => $this -> input -> post("first_expiry_date"),
-       'qty_order_doses' => $this -> input -> post("quantity_dose"),
-       'order_id'=>$order_id
-      );
-       $this->db->insert('order_item',$data); 
-       $this->session->set_flashdata('msg', '<div id="alert-message" class="alert alert-success text-center">Orders Submitted Successfully</div>');
+       $stock_on_hand = $this -> input -> post("stock_on_hand");
+       $min_stock = $this -> input -> post("min_stock");
+       $max_stock = $this -> input -> post("max_stock");
+       $first_expiry_date = $this -> input -> post("first_expiry_date");
+       $quantity_dose = $this -> input -> post("quantity_dose");
+       $vaccines = $this -> input -> post('vaccine');
+       
+
+       $vaccine_array=array();
+       $vaccine_counter=0;
+    
+    foreach ($vaccines as $vaccine) {
+       
+         $vaccine_array[$vaccine_counter]['vaccine_id']=$vaccines[$vaccine_counter];
+         $vaccine_array[$vaccine_counter]['stock_on_hand']=$stock_on_hand[$vaccine_counter];
+         $vaccine_array[$vaccine_counter]['min_stock']=$min_stock[$vaccine_counter];
+         $vaccine_array[$vaccine_counter]['max_stock']=$max_stock[$vaccine_counter];
+         $vaccine_array[$vaccine_counter]['first_expiry']=$first_expiry_date[$vaccine_counter];
+         $vaccine_array[$vaccine_counter]['qty_order_doses']=$quantity_dose[$vaccine_counter];
+         $vaccine_array[$vaccine_counter]['order_id']=$order_id[$vaccine_counter];
+         
+         $vaccine_counter++;
+      
+      }
+      
+      $main_array['own_vaccine']=$vaccine_array;
+
+      // Add assigned order id to order items
+      foreach ($main_array as $key => $value) {
+        foreach ($value as $keyvac => $valuevac) {
+          foreach ($valuevac as $keys => $values) {
+            if ($keys == "order_id") {
+            $temp[$keyvac]['order_id'] = $order_id;
+          }  else{
+            $temp[$keyvac][$keys] = $values;
+          }
+              
+          }
         
+        }
+         
+      }
+
+      $this->db->insert_batch('order_item',$temp);    
+ }
+ $this -> session ->set_flashdata('order_message','Orders Saved Successfully');
+ redirect('order/list_orders');
+
 }
+
 
 
 function get_with_limit($limit, $offset, $order_by) {

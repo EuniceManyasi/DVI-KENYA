@@ -69,7 +69,7 @@ echo form_open('',$form_attributes);?>
 
    <script type="text/javascript">
 
-             $('#date_received').datepicker().datepicker('setDate', new Date());
+            // $('#date_received').datepicker().datepicker('setDate', new Date());
 
               $('#stock_receive_tbl').delegate( '.add', 'click', function () {
             

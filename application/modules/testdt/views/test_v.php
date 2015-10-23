@@ -1,22 +1,4 @@
 
-<html>
-<head>
-    <title></title>
-<!-- DataTables CSS -->
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.css">
-  
-<!-- jQuery -->
-<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  
-<!-- DataTables -->
-<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.js"></script>
-
-
-
-</head>
-<body>
-
-
 <table id="example" class="display">
     <thead>
         <tr>
@@ -38,8 +20,6 @@
     </tfoot>
 </table>
 
-</body>
-</html>
 
 <script type="text/javascript">
 /*    $(document).ready( function () {

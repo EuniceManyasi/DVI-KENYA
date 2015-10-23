@@ -21,13 +21,8 @@ function get_orderitems($order_id){
 	
 	return $query->result_array();
 }
-function get_order_values($selected_vaccine){
-    	$call_procedure="CALL get_order_values($selected_vaccine)";
-        $query=$this->db->query($call_procedure);
-        $query->next_result();
-        return $query->result_array();
-}
-        
+
+
 function get($order_by){
 $table = $this->get_table();
 $this->db->order_by($order_by);

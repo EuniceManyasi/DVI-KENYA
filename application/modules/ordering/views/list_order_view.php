@@ -28,4 +28,23 @@
         </tbody>
         </table>
 
+<!--Listing Rejected Orders-->
+      <hr></hr>
+      <div><h5 class="bg-info">Rejected Orders</h5></div>
+      <hr></hr>
+
+  <table class="table" id="list_rejected_orders_tbl">
+        <thead>
+          <tr><td>Order No</td><td>Order By </td><td>Date Rejected</td><td>Reasons</td><td>Action</td></tr>
+        </thead>
+        <tbody>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="#">Edit/Modify</a></td>
+                </tr>
+        </tbody>
+  </table>
 </form>

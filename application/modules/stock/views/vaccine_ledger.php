@@ -5,28 +5,20 @@ echo form_open('',$form_attributes);?>
 <table>
 	<thead>
 	<p class="bg-info"> Vaccines</p>
-		<th style="width:30%;" class="small" align="center">Vaccine/Diluents</th>
-		<th style="width:30%;" class="small" align="center">Batch Numbers</th>
-		<th style="width:20%;" class="small" align="center">Store Balance</th>
+		
+                
+                
 							
 	</thead>
-	<tbody>
+<tbody>
 		
-		<td> <select name="v_list" class="col-xs-11 v_list" id="v_list">
-                 <option value="">--Select One--</option>
-                 <?php foreach ($vaccines as $vaccine) { 
-                     echo "<option value='".$vaccine['ID']."'>".$vaccine['Vaccine_name']."</option>";
-                     }?>
-                </select></td>
-        <td> <select name="batch_list" class="col-xs-11 batch_list" id="batch_list">
-                 <option value="">--Select One--</option>
-                 <?php foreach ($vaccines as $vaccine) { 
-                     echo "<option value='".$vaccine['ID']."'>".$vaccine['Vaccine_name']."</option>";
-                     }?>
-                </select></td>
-        <td><?php $data=array('name' => 'store_bal','id'=> 'store_bal','class'=>'store_bal col-xs-14'); echo form_input($data);?></td>
-        
-
+<!--		<td> <select name="v_list" class="col-xs-11 v_list" id="v_list">
+                 <option value="">--Select One--</option>-->
+                 <?php // foreach ($vaccines as $vaccine) { 
+//                     echo "<option value='".$vaccine['ID']."'>".$vaccine['Vaccine_name']."</option>";
+//                     }?>
+<!--                </select></td>-->
+                <th style="width:50%;" class="small" align="center">Store Balance: </th>
              		
 	</tbody>
 </table>
@@ -36,13 +28,12 @@ echo form_open('',$form_attributes);?>
 <hr></hr><hr></hr>
 	<thead>
 	<p class="bg-info"> Vaccine Ledger</p>
-		<th style="width:12%;" class="small">Vaccines/Diluents (Origin/Destination)</th>
-		<th style="width:12%;" class="small">Origin/Destination</th>
+		<th style="width:12%;" class="small">Vaccines/Diluents</th>
+                <th style="width:12%" class="small"> Origin/Destination </th>
 		                    <th style="width:12%" class="small">Batch Number</th>
 							<th style="width:12%;" class="small">Transaction Date</th>
 							<th style="width:12%;" class="small"> Stock Received </th>
 							<th style="width:12%;" class="small">Stock Issued</th>
-							<th style="width:12%;" class="small">Physical Count</th>
 							<th style="width:12%" class="small">Expiry Date</th>
 							<th style="width:10%" class="small">VVM Status</th>
 	</thead>
@@ -53,12 +44,11 @@ echo form_open('',$form_attributes);?>
 				
              	    
              	    <td><?php echo $ledger['Vaccine_name']?></td>
-             	    <td><?php echo $ledger['Vaccine_name']?></td>
+                    <td></td>
              	    <td><?php echo $ledger['batch_number']?></td>
              	    <td><?php echo $ledger['transaction_date']?></td>
              	    <td><?php echo $ledger['quantity_in']?></td>
              	    <td><?php echo $ledger['quantity_out']?></td>
-             	    <td><?php echo $ledger['stock_balance']?></td>
              	    <td><?php echo $ledger['expiry_date']?></td>
              	    <td><?php echo $ledger['name']?></td>
              		

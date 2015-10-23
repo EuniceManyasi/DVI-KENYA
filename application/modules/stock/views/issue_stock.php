@@ -206,6 +206,8 @@ echo form_open('',$form_attributes);?>
 			    	stock_row.closest("tr").find(".vvm_s").val("");
 			    	stock_row.closest("tr").find(".batch_no ").append("<option value='0'>Select batch </option> ");
 			    	$.each(data,function(key,value){
+                                    //console.log(key);
+                                    //console.log(value.batch_number);
 			    		stock_row.closest("tr").find(".batch_no").append("<option value='"+value.batch_number+"'>"+value.batch_number+"</option> ");
 
 			    		
